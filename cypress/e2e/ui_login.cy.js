@@ -1,27 +1,20 @@
-describe('Fluxo de Autenticação', () => {
-    it('Deve receber um token ao fazer login', () => {
-        
-        cy.request({
-            method: 'POST', 
-            url: 'https://serverest.dev/login',
-            body: {
-                "email": "beltrano@qa.com.br", 
-                "password": "teste"
-            }
-    
-        }).then((response) => {
-            
-        
-            expect(response.status).to.equal(200);
+//testes relacionados ao Login
+describe('Funcionalidade de Login', () => {
 
-     
-            expect(response.body.message).to.equal('Login realizado com sucesso');
+    //antes de abrir qualquer pasta
+    beforeEach(() => {
+        cy.visit('https://front.serverest.dev/login')
+    })
 
-           cy.log(response.body.authorization); 
-         
-            // response.body.authorization = O valor que veio do servidor
-            // .to.not.be.empty = A regra que estamos aplicando
-           expect(response.body.authorization).to.not.be.empty; 
-        })
+    it('Login com sucesso', () => {
+        cy.get('[data-testid="email"]').type('fulano@qa.com')
+        cy.get('[data-testid="senha"]').type('teste')
+        cy.get('[data-testid="entrar"]').click()
+        
+
+        
+        cy.url().should('include', '/admin/home')
+       
+        cy.contains('Bem Vindo').should('be.visible');
     })
 })
