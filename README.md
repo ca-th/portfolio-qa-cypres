@@ -14,8 +14,9 @@ O projeto aborda cenários reais de testes **E2E (Ponta a Ponta)**, **API** e **
 O projeto segue a arquitetura padrão do Cypress, com testes organizados por responsabilidade:
 
 | Arquivo | Descrição | Tipo de Teste |
-///////
+| :--- | :--- | :--- |
 | `fluxo_completo.cy.js` | Cria usuário via API e realiza login no Frontend (Abordagem Híbrida) | **E2E / Híbrido** |
 | `ui_login.cy.js` | Valida login (sucesso/falha) no site ServeRest | **UI (Frontend)** |
 | `api_produtos.cy.js` | Cadastro de usuários com dados dinâmicos | **API (Backend)** |
+
 
